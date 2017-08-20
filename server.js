@@ -5,10 +5,10 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-var User = require("./models/User.js");
+var User = require("./models/Users");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Run Morgan for Logging
 app.use(logger('dev'));
@@ -17,9 +17,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
-mongoose.connect("mongodb://localhost:27017/Rez-Up");
+mongoose.connect("mongodb://localhost:27017/rezUp");
 
 const db = mongoose.connection;
 
