@@ -34,6 +34,48 @@ var Main = React.createClass({
                   Sign In
                   <span className="caret"></span>
             </a>
+            <div className="dropdown-menu" style={{"padding": "10px", "width": "300px"}}>
+              <form id="signInForm">
+                <div className="form-group">
+                  <input id="username" className="form-control input-md" type="text" placeholder="Username"/>
+                </div>
+                <div className="form-group">
+                  <input id="password" className="form-control input-md" type="text" placeholder="Password"/>
+                </div>
+                <input className="btn btn-primary pull-right" type="submit" name="commit" value="Sign In" />
+              </form>
+            </div>
+
+            <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
+            <div className="modal-dialog modal-sm" role="document">
+                <div className="modal-content">
+                    <div className="modal-header"> <h3> Register with RezUp! </h3> </div>
+                    <div className="modal-body">
+                    
+                      <form className="form" id="registrationForm">
+                          <div className="form-group">
+                              <input id="ruser" className="form-control" type="text" placeholder="Username" />
+                          </div>
+                          <div className="form-group">
+                              <input id="remail" className="form-control" type="text" placeholder="Email" />
+                          </div>
+                          <div className="form-group">
+                              <input id="rpassword" className="form-control" type="password" placeholder="Password" />
+                          </div>
+                          <div className="form-group">
+                              <input id="rptpassword" className="form-control" type="password"
+                                      placeholder="Repeat Password" />
+                          </div>
+                          <input className="btn btn-primary" type="submit" name="register" value="Register" />
+                      </form>
+                    </div>
+                    <div className="modal-footer">
+                        <h5 style={{"display": "inline-block"}}> Already have an account? </h5> <a href="#"> Sign In </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+        
             </div>
          </div>
 
@@ -53,18 +95,7 @@ var Main = React.createClass({
           </div>
            
             </div>
-        </div>
-      
-
-      // <div className="container">
-   
-      //   <div className="row">
-
-        // </div>
-        // </div>
-
-  
-           
+        </div>         
            
     
     );
