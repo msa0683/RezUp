@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var userSchema = new Schema({
+var UserSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
@@ -36,13 +36,6 @@ var userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  // lastUpdated: a date type entry
-  lastUpdated: { type: Date },
-  // fullName: a string type entry
-  fullName: String
- });
-
-
   
 });
 
