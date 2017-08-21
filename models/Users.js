@@ -1,46 +1,53 @@
-// Include the Mongoose Dependencies
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt');
 
-
-var UserSchema = new Schema({
-  firstName: {
-    type: String,
-    trim: true,
-    required: "FirstName is Required"
-  },
-  lastName: {
-  	type: String,
-    trim: true,
-    required: "LastName is Required"
-  },
-   password: {
-    type: String,
-    trim: true,
-    required: "Password is Required",
-    validate: [
-      function(input) {
-        return input.length >= 6;
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("users", {
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validation: {
+          len: [1]
+        }
       },
-      "Password should be longer."
-    ]
-  },
-  // email: a string that must match an email format and must be unique in the collection
-  email: {
-    type: String,
-    unique: true,
-    match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
-  },
-  // userCreated: the current date
-  userCreated: {
-    type: Date,
-    default: Date.now
-  },
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validation: {
+          len: [1]
+        } 
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validation: {
+          len: [1]
+        }
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validation: {
+          len: [1]
+        }
+      },
+      oauth_id: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validation: {
+          len: [1]
+        }
+      }
+    }
+  );
+
+  User.prototype.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password)
+  }
   
-});
-
-// Create the Model
-var Users = mongoose.model('Users', UserSchema);
-
-// Export it for use elsewhere
-module.exports = Users;
+  User.associate = function(models) {
+    User.hasMany(models.itineraries, {
+      onDelete: 'CASCADE'
+    });
+  };
+  return User;
+};
