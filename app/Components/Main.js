@@ -39,7 +39,7 @@ var Main = React.createClass({
               <Login/>
             </div> 
           </div>
-          <div className="jumbotron" style={{'backgroundImage': 'url(./assets/images/img1.jpg)', 'height': '400px', 'backgroundPosition': 'center', 'backgroundSize': '100% 100%'}}>
+          <div className="jumbotron">
             <h2 className="text-center" style={{'color': 'white', 'textShadow': '3px 3px 10px black', 'fontSize': '54px'}}>REZUP</h2>
               <form className="form-inline pull-left navbar-form form-group" role="form">
                 <input type="text" className="form-control" placeholder="San Ramon, CA"/>
