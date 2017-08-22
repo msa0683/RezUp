@@ -1,3 +1,4 @@
+var User = require('mongoose').model('User');
 var passport = require('passport')
 var db = require("../models")
 var LocalStrategy = require('passport-local').Strategy;
@@ -5,7 +6,7 @@ var FacebookStrategy = require("passport-facebook").Strategy;
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    db.users.findOne({where: {username:username}}).then(function (user, err) {
+    db.user.findOne({where: {username:username}}).then(function (user, err) {
       if (err) { return done(err) }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
@@ -23,7 +24,7 @@ passport.use(new FacebookStrategy ({
   clientSecret: "a8f565dffb327f944dfb8b5eeb965dea",
   callbackURL: "http://localhost:3000/auth/facebook/return" 
 }, function(accessToken, refreshToken, profile, cb) {
-      db.users.findOne({where: {oauth_id: profile.id}}).then(function(user, err) {
+      db.user.findOne({where: {oauth_id: profile.id}}).then(function(user, err) {
         if(err) throw err
           if(user) {
             return cb(null, user) 
@@ -32,7 +33,7 @@ passport.use(new FacebookStrategy ({
               username: profile.displayName,
               oauth_id: profile.id
             }
-            db.users.create(user).then(function(user, err) {
+            db.user.create(user).then(function(user, err) {
               cb(null, user);
             })
 
@@ -47,7 +48,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  db.users.findById(id).then(function(user, err) {
+  db.user.findById(id).then(function(user, err) {
     done(err, user);
   });
 });

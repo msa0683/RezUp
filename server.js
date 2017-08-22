@@ -19,6 +19,17 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 app.use(express.static('public'));
 
+//Passport Middleware
+// =============================================================
+var passport = require("passport");
+var cookieParser = require("cookie-parser");
+var session = require("express-session")
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passport/passport")
+
 mongoose.connect("mongodb://localhost:27017/rezUp");
 
 const db = mongoose.connection;

@@ -1,8 +1,11 @@
+var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("users", {
-      username: {
+    Schema = mongoose.Schema,
+    passportLocalMongoose = require('passport-local-mongoose');
+
+var User = new Schema({
+          username: {
         type: DataTypes.STRING,
         allowNull: false,
         validation: {
@@ -37,17 +40,36 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       }
-    }
-  );
+ 
+});
 
-  User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password)
-  }
-  
-  User.associate = function(models) {
-    User.hasMany(models.itineraries, {
-      onDelete: 'CASCADE'
-    });
-  };
-  return User;
+User.methods.comparePassword = function comparePassword(password, callback) {
+  bcrypt.compare(password, this.password, callback);
 };
+
+/**
+ * The pre-save hook method.
+ */
+User.pre('save', function saveHook(next) {
+  const user = this;
+
+  // proceed further only if the password is modified or the users is new
+  if (!user.isModified('password')) return next();
+
+
+  return bcrypt.genSalt((saltError, salt) => {
+    if (saltError) { return next(saltError); }
+
+    return bcrypt.hash(user.password, salt, (hashError, hash) => {
+      if (hashError) { return next(hashError); }
+
+      // replace a password string with hash value
+      user.password = hash;
+
+      return next();
+    });
+  });
+});
+
+
+module.exports = mongoose.model('User', User);
