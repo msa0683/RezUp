@@ -9,6 +9,6 @@ import Main from './Components/Main';
 // This code here allows us to render our main component (in this case "Main")
 ReactDOM.render(
 
-	<Main />,
+	<Main/>,
 	document.getElementById('app')
 )

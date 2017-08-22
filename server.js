@@ -1,4 +1,4 @@
-// for npm pacakges you still have to use "var and require" because "import and from" will not work
+ 	// for npm pacakges you still have to use "var and require" because "import and from" will not work
 
 var express = require("express");
 var bodyParser = require("body-parser");

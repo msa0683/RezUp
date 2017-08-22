@@ -6,10 +6,14 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1",
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-datepicker": "^0.53.0",
+    "react-dom": "^0.14.3",
+    "simple-react-form": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
@@ -22,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack & node server",
     "start": "node server.js",
-     "build": "webpack"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
