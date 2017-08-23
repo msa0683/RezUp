@@ -73,8 +73,9 @@ var ListProperty = React.createClass({
               </label>
               <label className="checkbox-inline ">
               <input type="checkbox"/>
-              </label>
+
               Speakers
+              </label>
               <label className="checkbox-inline ">
               <input type="checkbox"/>
               Pool
