@@ -8,11 +8,12 @@ var Login = require("./children/LoginPage");
 var SignUp = require("./children/SignUpPage");
 
 import DatePicker from 'material-ui/DatePicker';
-//import moment from 'moment';
+import moment from 'moment';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import $ from 'jquery';
-
+//import { isSameDay, isDayDisabled, isDayInRange, getEffectiveMinDate, getEffectiveMaxDate, parseDate, safeDateFormat } from './date_utils'
 import {Form, Field} from 'simple-react-form'
+
 
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
@@ -27,7 +28,7 @@ var date = new Date();
 var Main = React.createClass({
 
  getInitialState: function() {
-    return { searchTerm: "", results: "", history: []};
+    return { searchTerm: "", results: "", history: [], startDate: moment()};
   },
 
   //this.handleChange = this.handleChange.bind(this);
@@ -62,6 +63,12 @@ var Main = React.createClass({
       && (dt <= moment().add(30, 'days'))
       && moment().subtract(1, 'minute');
   },*/
+
+  handleChange: function(date) {
+    this.setState({
+      startDate: date
+    });
+  },
   // Here we describe this component's render method
   render: function() {
     const startDate = new Date();
@@ -107,12 +114,14 @@ var Main = React.createClass({
                   onChange={(_date) => this.handleDateTimeSelect(_date)}
                 />*/}
                 <MuiThemeProvider>
-                <span>
-                  <DatePicker 
+                <div>
+                  <DatePicker
+                   
+                    placeholderText="Select a date between today and 5 days in the future" 
                     hintText="Calendar" 
                     shouldDisableDate={disablePrevDates(startDate)}
                   />
-                </span>
+                </div>
                 </MuiThemeProvider>
                 <button type="submit" className="btn btn-primary"> Search </button>
             </form>
