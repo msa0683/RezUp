@@ -11,6 +11,11 @@ var ListProperty = React.createClass({
     venueType: "",
     occupancy: "",
     amenities: [],
+    address: "",
+    city:"",
+    state: "",
+    postal: "",
+    country: "",
     date: "",
     time: [],
     price:"",
@@ -37,6 +42,11 @@ var ListProperty = React.createClass({
      this.setState({ time: "" });
      this.setState({ price: "" });
      this.setState({ images: "" });
+     this.setState({ address: "" });
+     this.setState({ city: "" });
+     this.setState({ state: "" });
+     this.setState({ postal: "" });
+     this.setState({ country: "" });
 
   },
   render: function() {
@@ -116,6 +126,57 @@ var ListProperty = React.createClass({
            </div>
           </div>
           
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="address">
+              Address Line
+            </label>
+            <div className="col-sm-10">
+              <input type="text" value={this.state.address} onChange={this.handleChange} className="form-control" id="address" name="address" placeholder="Address Line " />
+            </div>
+          </div>
+          
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="address">
+              City
+            </label>
+            <div className="col-sm-10">
+              <input type="text" value={this.state.city} onChange={this.handleChange} className="form-control" id="city" name="city" placeholder="City" />
+            </div>
+          </div>
+          
+
+          
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="address">
+             State
+            </label>
+            <div className="col-sm-10">
+              <input type="text" value={this.state.state} onChange={this.handleChange} className="form-control" id="state" name="state" placeholder="State" />
+            </div>
+          </div>
+          
+
+            <div className="form-group ">
+            <label className="control-label col-sm-2" for="address">
+              Postal Code
+            </label>
+            <div className="col-sm-10">
+              <input type="text" value={this.state.postal} onChange={this.handleChange} className="form-control" id="postal" name="postal" placeholder="Postal Code" />
+            </div>
+          </div>
+          
+         
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="address">
+              Country
+            </label>
+            <div className="col-sm-10">
+              <input type="text" value={this.state.country} onChange={this.handleChange} className="form-control" id="address" name="country" placeholder="Country" />
+            </div>
+          </div>
+          
+
+
           <div className="form-group ">
             <label className="control-label col-sm-2" for="date">
               Date
