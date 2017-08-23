@@ -8,160 +8,135 @@ var ListProperty = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
-     <div>
        
-            <section class="section">
-    <div className="container">
-      
-      <div className="field is-horizontal">
-       <div className="field-label is-normal">
-        <label className="label">Venue Name</label>
-    </div>
-    <div className="field-body">
-     <div className="field">
-      <p className="control is-expanded has-icons-left">
-        
-        </p>
-    </div>
-    <div className="field">
-      <p className="control is-expanded has-icons-left has-icons-right">
-        <input className="input is-success" type="email" placeholder="Email" value="alex@smith.com">
-        <span className="icon is-small is-left">
-          <i className="fa fa-envelope"></i>
-        </span>
-        <span className="icon is-small is-right">
-          <i className="fa fa-check"></i>
-        </span>
-      </p>
-    </div>
-    </div>
-   </div>
+  <div className="bootstrap-iso">
+   <div className="container-fluid">
+    <div className="row">
+      <div className="col-md-6 col-sm-6 col-xs-12">
+        <form className="form-horizontal" method="post">
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="venueName">
+              Venue Name
+            </label>
+            <div className="col-sm-10">
+              <input type="text" className="form-control" id="venueName" name="venueName" placeholder="venueName" />
+            </div>
+          </div>
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="email">
+              Email
+            </label>
+            <div className="col-sm-10">
+              <input type="text" className="form-control" id="email" name="email" placeholder="alex@smith.com" />
+            </div>
+          </div>
 
-   <div className="field is-horizontal">
-    <div className="field-label"></div>
-     <div className="field-body">
-       <div className="field is-expanded">
-         <div className="field has-addons">
-           <p className="control">
-            <a className="button is-static">
-            +44
-            </a>
-            </p>
-             <p className="control is-expanded">
-              <input className="input" type="tel" placeholder="Your phone number">
-             </p>
-        </div>
-             <p className="help">Do not enter the first zero</p>
-        </div>
-       </div>
-     </div>
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="venueType">
+              Venue Type
+            </label>
+            <div className="col-sm-10" id="venueType">
+             <select>
+              <option>Event Space</option>
+              <option>Meeting Space</option>
+              <option>Others</option>
+            </select>
+            </div>
+           </div>
 
-    <div className="field-label is-normal">
-     <label className="label">Venue Type</label>
-    </div>
-     <div className="field-body">
-      <div className="field is-narrow">
-       <div className="control">
-        <div className="select is-fullwidth">
-          <select>
-            <option>Event Space</option>
-            <option>Meeting Space</option>
-            <option>Others</option>
-          </select>
-        </div>
-      </div>
-      </div>
-     </div>
-    </div>
-   <div className="field is-horizontal">
-    <div className="field-label is-normal">
-    <label className="label">Occupancy</label>
-   </div>
-   <div className="field-body">
-    <div className="field is-narrow">
-      <div className="control">
-        <div className="select is-fullwidth">
-          <select>
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="occupancy">
+              Occupancy
+            </label>
+            <div className="col-sm-10" id="occupancy">
+             <select>
             <option>1-50</option>
             <option>50-75</option>
             <option>75-100</option>
             <option>100-125</option>
-          </select>
-        </div>
-      </div>
-     </div>
-    </div>
-  </div>
- <div className="field is-horizontal">
-  <div className="field-label is-normal">
-    <label className="label">Venue Address</label>
-  </div>
-   <div className="field-body">
-    <div className="field">
-      <div className="control">
-        <input className="input is-danger" type="text" placeholder="Address">
-      </div>
-      <p className="help is-danger">
-        This field is required
-      </p>
-    </div>
-  </div>
- </div>
- <div className="field is-horizontal">
-  <div className="field-label is-normal">
-    <label className="label">Amenities</label>
-  </div>
-  <div className="field-body">
-    <div className="field is-narrow">
-      <div className="control">
-          <label className="checkbox">
-              <input type="checkbox">
+            </select>            
+           </div>
+           </div>
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="occupancy">
+              Amenities
+
+            </label>
+            <div className="col-sm-10" id="occupancy">
+             <label className="checkbox-inline ">
+              <input type="checkbox"/>
               Wifi
-              <input type="checkbox">
+              </label>
+              <label className="checkbox-inline ">
+              <input type="checkbox"/>
               TV
-              <input type="checkbox">
+              </label>
+              <input type="checkbox"/>
               Speakers
-              <input type="checkbox">
+              <label className="checkbox-inline ">
+              <input type="checkbox"/>
               Pool
-          </label>
+             </label>           
+           </div>
+          </div>
+          
+          <div className="form-group ">
+            <label className="control-label col-sm-2" for="date">
+              Date
+            </label>
+            <div className="col-sm-10">
+              <input className="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+            </div>
+          </div>
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="time">
+              Select Time
+            </label>
+            <div className="col-sm-10">
+              <label className="checkbox-inline ">
+            <input type="checkbox" name="time" id="checkbox1" value="9 AM - 12 PM"/> 9 AM - 12 PM
+           </label>
+           <label className="checkbox-inline">
+            <input type="checkbox" name="time" id="checkbox2" value="1 PM - 4 PM"/> 1 PM - 4 PM
+           </label>
+           <label className="checkbox-inline">
+            <input type="checkbox" name="time" id="checkbox1" value="5 PM - 8 PM"/> 5 PM - 8 PM
+           </label>
+           </div>
+           </div>
+           <div className="form-group ">
+            <label className="control-label col-sm-2" for="price">
+              Price
+            </label>
+            <div className="col-sm-10">
+              <input className="form-control" id="price" name="price" placeholder="price" type="text" />
+            </div>
+          </div>
+          <div className="form-group">
+         <label>Upload Images</label>
+         <div className="input-group">
+            <span className="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp"/>
+                </span>
+            </span>
+            <input type="text" className="form-control" readonly/>
         </div>
-      </div>
-
-    </div>
-  </div>
-  <div className="field">
-  <div className="file is-primary">
-    <label className="file-label">
-      <input className="file-input" type="file" name="resume">
-      <span className="file-cta">
-        <span className="file-icon">
-          <i className="fa fa-upload"></i>
-        </span>
-        <span className="file-label">
-          Upload Pictures
-        </span>
-      </span>
-    </label>
-  </div>
-</div>
-
-<div className="field is-horizontal">
-  <div className="field-label is-normal">
-    <label className="label">Brief Venue Description</label>
-  </div>
-  <div className="field-body">
-    <div className="field">
-      <div className="control">
-        <textarea className="textarea" placeholder="What you'd like your guests to know"></textarea>
+        <img id='img-upload'/>
+        </div>
+          <div className="form-group">
+            <div className="col-sm-10 col-sm-offset-2">
+              <button className="btn btn-primary " name="submit" type="submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
-</div>
-
-
-
+        
     );
   }
 });
