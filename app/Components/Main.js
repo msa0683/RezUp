@@ -12,6 +12,7 @@ var helpers = require("./utils/helpers");
 
 var Main = React.createClass({
 
+  
  getInitialState: function() {
     return { searchTerm: "", results: "", history: [] };
   },
@@ -24,6 +25,15 @@ var Main = React.createClass({
             <div className="pull-left navbar-brand">
               <a href="#">REZUP</a>
             </div>
+
+             <div id="navbarForm" className="pull-left">
+              <a href="../ListPropertyForm.js" id="ListPropertyButton" className="btn btn-default navbar-btn" 
+                     aria-expanded="false">
+                <span className="" aria-hidden="true"></span>
+                    List Your Event Space
+                <span className="caret"></span>
+              </a>
+              </div>
             <div id="navbarForm" className="pull-right">
               <a href="#" id="signInBtn" className="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -37,6 +47,7 @@ var Main = React.createClass({
               </a>
               <SignUp/>
               <Login/>
+
             </div> 
           </div>
           <div className="jumbotron">
@@ -47,7 +58,7 @@ var Main = React.createClass({
                 <button type="submit" className="btn btn-primary"> Search </button>
             </form>
           </div> 
-          <ListPropertyForm /> 
+           <ListPropertyForm/>
         </div>
       </div>            
     );
