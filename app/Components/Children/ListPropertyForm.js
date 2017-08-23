@@ -10,9 +10,9 @@ var ListProperty = React.createClass({
     email: "",
     venueType: "",
     occupancy: "",
-    amenities: "",
+    amenities: [],
     date: "",
-    time: "",
+    time: [],
     price:"",
     images:""
 
@@ -91,26 +91,26 @@ var ListProperty = React.createClass({
            </div>
            </div>
            <div className="form-group ">
-            <label className="control-label col-sm-2" for="occupancy">
+            <label className="control-label col-sm-2" for="amenities">
               Amenities
 
             </label>
             <div className="col-sm-10" id="amenities">
              <label className="checkbox-inline ">
-              <input type="checkbox"/>
+              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
               Wifi
               </label>
               <label className="checkbox-inline ">
-              <input type="checkbox"/>
+              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
               TV
               </label>
               <label className="checkbox-inline ">
-              <input type="checkbox"/>
+              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
 
               Speakers
               </label>
               <label className="checkbox-inline ">
-              <input type="checkbox"/>
+              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
               Pool
              </label>           
            </div>
@@ -130,13 +130,13 @@ var ListProperty = React.createClass({
             </label>
             <div className="col-sm-10">
               <label className="checkbox-inline ">
-            <input type="checkbox" name="time" id="checkbox1" value="9 AM - 12 PM"/> 9 AM - 12 PM
+            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox1" value="9 AM - 12 PM"/> 9 AM - 12 PM
            </label>
            <label className="checkbox-inline">
-            <input type="checkbox" name="time" id="checkbox2" value="1 PM - 4 PM"/> 1 PM - 4 PM
+            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox2" value="1 PM - 4 PM"/> 1 PM - 4 PM
            </label>
            <label className="checkbox-inline">
-            <input type="checkbox" name="time" id="checkbox1" value="5 PM - 8 PM"/> 5 PM - 8 PM
+            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox3" value="5 PM - 8 PM"/> 5 PM - 8 PM
            </label>
            </div>
            </div>
