@@ -4,10 +4,16 @@
   "description": "Application to find private event locations and post event locations ( UCB Full Stack Project 3)",
   "main": "public/index.html",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.15.5",
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local-mongoose": "^4.1.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
@@ -22,7 +28,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack & node server",
     "start": "node server.js",
-     "build": "webpack"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

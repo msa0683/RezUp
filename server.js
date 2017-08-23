@@ -1,5 +1,5 @@
 // for npm pacakges you still have to use "var and require" because "import and from" will not work
-
+var dbs = require('../models');
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
@@ -43,6 +43,7 @@ db.once('open', () => {
 });
 
 app.get('/', (req, res) => {
+	console.log(dbs.user)
   res.sendFile('./public/index.html');
 }); 
 

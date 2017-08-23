@@ -5,36 +5,42 @@ var bcrypt = require('bcrypt');
     passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new Schema({
-          username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validation: {
-          len: [1]
-        }
-      },
       first_name: {
-        type: DataTypes.STRING,
+        type: String,
         allowNull: true,
         validation: {
           len: [1]
         } 
       },
       last_name: {
-        type: DataTypes.STRING,
+        type: String,
         allowNull: true,
         validation: {
           len: [1]
         }
       },
+        username: {
+        type: String,
+        allowNull: false,
+        validation: {
+          len: [1]
+        }
+      },
+        email: {
+        type: String,
+         unique: true,
+        match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
+      },
+
       password: {
-        type: DataTypes.STRING,
+        type: String,
         allowNull: true,
         validation: {
           len: [1]
         }
       },
       oauth_id: {
-        type: DataTypes.STRING,
+        type: String,
         allowNull: true,
         validation: {
           len: [1]

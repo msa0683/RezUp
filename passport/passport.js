@@ -1,6 +1,6 @@
 var User = require('mongoose').model('User');
 var passport = require('passport')
-var db = require("../models")
+var db = require("../models/Users")
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require("passport-facebook").Strategy;
 
@@ -52,3 +52,4 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
