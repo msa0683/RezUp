@@ -4,8 +4,41 @@ var React = require("react");
 // Creating the Form component
 var ListProperty = React.createClass({
 
-// When a user submits...
-  // Here we describe this component's render method
+  getInitialState: function() {
+  return {
+    venueName: "",
+    email: "",
+    venueType: "",
+    occupancy: "",
+    amenities: "",
+    date: "",
+    time: "",
+    price:"",
+    images:""
+
+  }
+ },
+    handleChange: function(event) {
+
+    this.setState({ [event.target.name]: event.target.value });
+
+  },
+  
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+    console.log(this.state);
+     this.setState({ venueName: "" });
+     this.setState({ email: "" });
+     this.setState({ venueType: "" });
+     this.setState({ occupancy: "" });
+     this.setState({ amenities: "" });
+     this.setState({ date: "" });
+     this.setState({ time: "" });
+     this.setState({ price: "" });
+     this.setState({ images: "" });
+
+  },
   render: function() {
     return (
        
@@ -13,13 +46,13 @@ var ListProperty = React.createClass({
    <div className="container-fluid">
     <div className="row">
       <div className="col-md-6 col-sm-6 col-xs-12">
-        <form className="form-horizontal" method="post">
+        <form className="form-horizontal" method="post" id="postPropertyForm" onSubmit ={this.handleSubmit}>
           <div className="form-group ">
             <label className="control-label col-sm-2" for="venueName">
               Venue Name
             </label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="venueName" name="venueName" placeholder="venueName" />
+              <input type="text" value={this.state.venueName} onChange={this.handleChange} className="form-control" id="venueName" name="venueName" placeholder="venueName" />
             </div>
           </div>
           <div className="form-group ">
@@ -27,7 +60,7 @@ var ListProperty = React.createClass({
               Email
             </label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="email" name="email" placeholder="alex@smith.com" />
+              <input type="text" value={this.state.email} onChange={this.handleChange} className="form-control" id="email" name="email" placeholder="alex@smith.com" />
             </div>
           </div>
 
@@ -36,7 +69,7 @@ var ListProperty = React.createClass({
               Venue Type
             </label>
             <div className="col-sm-10" id="venueType">
-             <select>
+             <select name="venueType" value={this.state.venueType} onChange={this.handleChange}>
               <option>Event Space</option>
               <option>Meeting Space</option>
               <option>Others</option>
@@ -49,7 +82,7 @@ var ListProperty = React.createClass({
               Occupancy
             </label>
             <div className="col-sm-10" id="occupancy">
-             <select>
+             <select name="occupancy" value={this.state.occupancy} onChange={this.handleChange}>
             <option>1-50</option>
             <option>50-75</option>
             <option>75-100</option>
@@ -62,7 +95,7 @@ var ListProperty = React.createClass({
               Amenities
 
             </label>
-            <div className="col-sm-10" id="occupancy">
+            <div className="col-sm-10" id="amenities">
              <label className="checkbox-inline ">
               <input type="checkbox"/>
               Wifi
@@ -112,7 +145,7 @@ var ListProperty = React.createClass({
               Price
             </label>
             <div className="col-sm-10">
-              <input className="form-control" id="price" name="price" placeholder="price" type="text" />
+              <input value={this.state.price} onChange={this.handleChange} className="form-control" id="price" name="price" placeholder="price" type="text" />
             </div>
           </div>
           <div className="form-group">
