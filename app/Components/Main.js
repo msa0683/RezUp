@@ -46,7 +46,8 @@ var Main = React.createClass({
                 <input type="Date" className="form-control" placeholder="DDMMYY"/>   
                 <button type="submit" className="btn btn-primary"> Search </button>
             </form>
-          </div>  
+          </div> 
+          <ListPropertyForm /> 
         </div>
       </div>            
     );
