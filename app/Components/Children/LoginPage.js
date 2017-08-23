@@ -25,7 +25,7 @@ var Login = React.createClass({
     event.preventDefault();
     console.log("clicked");
     this.setState({ username: "" });
-     this.setState({ password: "" });
+    this.setState({ password: "" });
     
 
   },
@@ -38,10 +38,10 @@ var Login = React.createClass({
 
               <form id="signInForm" method='POST' onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <input value= {this.state.username} onChange={this.handleChange} id="username" className="form-control input-md" type="text" placeholder="Username"/>
+                  <input value= {this.state.username} onChange={this.handleChange} id="username" className="form-control input-md" name="username" type="text" placeholder="Username"/>
                 </div>
                 <div className="form-group">
-                  <input value= {this.state.password} onChange={this.handleChange} id="password" className="form-control input-md" type="text" placeholder="Password"/>
+                  <input value= {this.state.password} onChange={this.handleChange} id="password" className="form-control input-md" name="password" type="password" placeholder="Password"/>
                 </div>
                 <input className="btn btn-primary pull-right" type="submit" name="commit" value="Sign In" />
               </form>
