@@ -5,19 +5,22 @@
   "main": "public/index.html",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "^4.14.0",
     "express-session": "^1.10.1",
+    "jest": "^20.0.4",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.5.1",
+    "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
-    "mongoose": "^4.5.1",
-    "morgan": "^1.7.0",
-    "serve-favicon": "~2.4.2",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",

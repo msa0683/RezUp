@@ -13,6 +13,7 @@ const User = new Schema({
   },
   password: {
     type: String,
+    select: false,
     trim: true,
     required: "Password is Required",
     validate: [
