@@ -1,20 +1,17 @@
 // Include the Mongoose Dependencies
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 
-var UserSchema = new Schema({
-  firstName: {
+
+const User = new Schema({
+  username: {
     type: String,
     trim: true,
     required: "FirstName is Required"
   },
-  lastName: {
-  	type: String,
-    trim: true,
-    required: "LastName is Required"
-  },
-   password: {
+  password: {
     type: String,
     trim: true,
     required: "Password is Required",
@@ -24,6 +21,16 @@ var UserSchema = new Schema({
       },
       "Password should be longer."
     ]
+  },
+  firstName: {
+    type: String,
+    trim: true,
+    required: "FirstName is Required"
+  },
+  lastName: {
+  	type: String,
+    trim: true,
+    required: "LastName is Required"
   },
   // email: a string that must match an email format and must be unique in the collection
   email: {
@@ -39,8 +46,6 @@ var UserSchema = new Schema({
   
 });
 
-// Create the Model
-var Users = mongoose.model('Users', UserSchema);
-
+User.plugin(passportLocalMongoose);
 // Export it for use elsewhere
-module.exports = Users;
+module.exports = mongoose.model('User', User);;
