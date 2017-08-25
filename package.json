@@ -11,6 +11,7 @@
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "^4.14.0",
+    "express-fileupload": "^0.1.4",
     "express-session": "^1.10.1",
     "method-override": "^2.3.9",
     "mongoose": "^4.5.1",
@@ -20,7 +21,9 @@
     "passport-local-mongoose": "^4.0.0",
     "react": "^0.14.3",
     "react-checkbox-group": "^3.3.1",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "routes": "^2.1.0",
+    "serve-favicon": "^2.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",

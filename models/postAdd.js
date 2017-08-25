@@ -24,31 +24,27 @@ var PostAdd = new Schema({
     type: Number,
     
   },
-  amenities: {
-    type: String,
+    amenities: [{
+    type: String
+}],
     
-  },
   date: {
     type: Date,
     
   },
-  time: {
-    type: Number,
-    
-  },
+  time: [{
+    type: Number
+}],
   price: {
     type: Number,
     
-  },
-  images: {
-    type: ,
-    
-  },
+  }
+ 
   
 });
 
 // Create the Model
-var Users = mongoose.model('postAdd', PostAdd);
+var PostAdd = mongoose.model('postAdd', PostAdd);
 
 // Export it for use elsewhere
-module.exports = Users;
+module.exports = PostAdd;

@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const fileUpload = require('express-fileupload');
 // const methodOverride = require("method-override");
 const expressSession = require('express-session')({
   secret: 'random strings here',
@@ -23,15 +24,40 @@ const flash = require('connect-flash');
 const session = require("express-session")
 
 const User = require('./models/user');
+const PostAdd = require('./models/postAdd');
 
 // Routes
-const index = require('./routes/index');
-const api = require('./routes/api/index.js');
-const users = require('./routes/api/users');
+// const index = require('./routes/index');
+// const api = require('./routes/api/index.js');
+// const users = require('./routes/api/users');
 const authentication = require('./routes/api/authentication');
 
 const app = express();
 
+app.use(fileUpload());
+
+app.post("/upload", function(res,req){
+  if(!req.files){
+    res.send("No file uploaded");
+  }
+  else{
+    var file = req.files.file;
+    var extension = path.extname(file.name);
+    if(extension !=="png" && extension !== ".gif" && extension !==".jpg"){
+      res.send("only images are allowed");
+    }
+    else{
+      file.mv(__dirname+"/uploads/" + file.name, function(err){
+        if(err){
+          res.status(500).send(err);
+        }
+        else{
+          res.send("File Uploaded");
+        }
+      });
+    }
+  }
+})
 //Coonect to Mongoose
 mongoose.connect("mongodb://localhost:27017/rezUp", { useMongoClient: true });
 
@@ -55,10 +81,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', api);
-app.use('/api/users', users);
+// app.use('/api', api);
+// app.use('/api/users', users);
 app.use('/api/authentication', authentication);
-app.use('/*', index);
+// app.use('/*', index);
 
 
 
@@ -67,6 +93,28 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.post('/insert', function(req, res, next){
+  var item =({
+    venueName : req.body.venueName,
+    email: req.body.email,
+    venueType: req.body.venueType,
+    occupancy: req.body.occupancy,
+    amenities: req.body.amenities,
+    date: req.body.date,
+    time: req.body.time,
+    price: req.body.price
+}).save(function(err, res){
+   if(err){
+    res.json(err);
+   }
+   else{
+   res.send("inserted");
+   }
+
+})
+
+ 
+});
 //catch 404 and forward to error handler
 app.use((req, res, next) => {
 	const err = new Error("Not Found");

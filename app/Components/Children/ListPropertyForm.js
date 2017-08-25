@@ -86,7 +86,7 @@ var ListProperty = React.createClass({
    <div className="container-fluid">
     <div className="row">
       <div className="col-md-6 col-sm-6 col-xs-12">
-        <form className="form-horizontal" method="post" id="postPropertyForm" onSubmit ={this.handleSubmit}>
+        <form className="form-horizontal" method="post" id="postPropertyForm" action="/insert" onSubmit ={this.handleSubmit}>
           <div className="form-group ">
             <label className="control-label col-sm-2" for="venueName">
               Venue Name
@@ -201,12 +201,13 @@ var ListProperty = React.createClass({
           
 
 
-          <div className="form-group ">
-            <label className="control-label col-sm-2" for="date">
+          <div className="form-group" id="datetimepicker">
+            <label className="input-group date col-sm-2" for="date">
               Date
             </label>
             <div className="col-sm-10">
-              <input className="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+              <input className="form-control" value={this.state.date} onChange={this.handleChange} id="date" name="date" placeholder="MM/DD/YYYY" type="date" />
+             
             </div>
           </div>
            <div className="form-group ">
