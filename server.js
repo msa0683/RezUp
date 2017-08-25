@@ -16,9 +16,7 @@ const expressSession = require('express-session')({
   saveUninitialized: false,
 });
 const webpack = require('webpack');
-// const webpackConfig = require('./webpack.config.babel');
-// const webpackDevMiddleware = require('webpack-dev-middleware');
-// const webpackHotMiddleware = require('webpack-hot-middleware');
+
 
 const flash = require('connect-flash');
 const session = require("express-session")
@@ -27,9 +25,6 @@ const User = require('./models/user');
 const PostAdd = require('./models/postAdd');
 
 // Routes
-// const index = require('./routes/index');
-// const api = require('./routes/api/index.js');
-// const users = require('./routes/api/users');
 const authentication = require('./routes/api/authentication');
 
 const app = express();
@@ -81,10 +76,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/api', api);
-// app.use('/api/users', users);
+
 app.use('/api/authentication', authentication);
-// app.use('/*', index);
 
 
 
