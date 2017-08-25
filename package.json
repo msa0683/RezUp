@@ -11,7 +11,6 @@
     "ejs": "~2.5.6",
     "express": "^4.14.0",
     "express-session": "^1.10.1",
-    "jest": "^20.0.4",
     "method-override": "^2.3.9",
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",

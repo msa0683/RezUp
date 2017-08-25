@@ -1,19 +1,21 @@
 const express = require('express');
-const passport = require('passport');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const methodOverride = require("method-override");
 const flash = require('connect-flash');
-const mongoose = require('mongoose');
+
+
 
 // Routes
 const index = require('./routes/index');
 const api = require('./routes/api/index.js');
-const user = require('./models/user.js');
-// const index = require('')
+const users = require('./routes/api/users');
 
 
 const app = express();
@@ -41,10 +43,12 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api', api)
+app.use('/api', api);
+app.use('/api/users', users);
 
 
 // Configure Passport
+const User = require('./models/user')
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -80,8 +84,6 @@ app.use((err, req, res, next) => {
 
 //Passport Middleware
 // =============================================================
-// var passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
 
 // var session = require("express-session")
 // 
@@ -104,7 +106,6 @@ app.use((err, req, res, next) => {
 //   res.sendFile('./public/index.html');
 // }); 
 
-// app.use('/', api);
 
 // app.listen(PORT, function(){
 //   console.log(("Express server listening on port " + PORT))
