@@ -19,8 +19,8 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "serve-favicon": "~2.4.2"
+    "react-checkbox-group": "^3.3.1",
+    "react-dom": "^0.14.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
