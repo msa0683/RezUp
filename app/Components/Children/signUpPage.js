@@ -1,5 +1,7 @@
 // Include React
 var React = require("react");
+var helpers = require("../utils/helpers")
+
 
 // Creating the Form component
  
@@ -7,16 +9,16 @@ var SignUp = React.createClass({
 
   getInitialState: function() {
   return {
+    username: "",
+    password: "",
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
-    password: "",
-    rpassword: ""
+    password: ""
 
   }
  },
-    handleChange: function(event) {
+  handleChange: function(event) {
 
     this.setState({ [event.target.name]: event.target.value });
 
@@ -25,12 +27,19 @@ var SignUp = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log(this.state);
-     this.setState({ firstName: "" });
-     this.setState({ lastName: "" });
-     this.setState({ username: "" });
-     this.setState({ email: "" });
-
+    var self = this;
+    this.setState({ 
+      username: "",
+      firstName: "",
+      lastName: "",
+      email: ""
+    });
+    helpers.registerUser(this.state).then(function (res) {
+      if (res.data.success) {
+        $("#registerModal").modal('hide')
+        self.props.handleLogIn()
+      }
+    })
   },
 
   // Here we describe this component's render method
@@ -42,7 +51,7 @@ var SignUp = React.createClass({
             
             <div className="modal-dialog modal-sm" role="document">
                 <div className="modal-content">
-                    <div className="modal-header"> <h3> Register with RezUp! </h3> </div>
+                    <div className="modal-header"> <h3> Regise with RezUp! </h3> </div>
                     <div className="modal-body">
                     
                       <form className="form" id="registrationForm" onSubmit ={this.handleSubmit}>
