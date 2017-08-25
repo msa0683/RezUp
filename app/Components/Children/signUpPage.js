@@ -1,5 +1,7 @@
 // Include React
 var React = require("react");
+var helpers = require("../utils/helpers")
+
 
 // Creating the Form component
  
@@ -7,12 +9,12 @@ var SignUp = React.createClass({
 
   getInitialState: function() {
   return {
+    username: "",
+    password: "",
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
-    password: "",
-    rpassword: ""
+    password: ""
 
   }
  },
@@ -26,11 +28,11 @@ var SignUp = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
     console.log(this.state);
+     this.setState({ username: "" });
      this.setState({ firstName: "" });
      this.setState({ lastName: "" });
-     this.setState({ username: "" });
      this.setState({ email: "" });
-
+     helpers.registerUser(this.state)
   },
 
   // Here we describe this component's render method

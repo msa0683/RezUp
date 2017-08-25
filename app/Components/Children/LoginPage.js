@@ -1,21 +1,19 @@
 // Include React
 var React = require("react");
+var helpers = require("../utils/helpers");
+
 
 // Creating the Form component
 var Login = React.createClass({
  
  getInitialState: function() {
-  return {
-   
+  return ({
     username: "",
     password: ""
-   
-
-  }
+  })
  },
     handleChange: function(event) {
-
-    this.setState({ [event.target.name]: event.target.value });
+      this.setState({ [event.target.name]: event.target.value });
 
   },
 // When a user submits...
@@ -24,10 +22,7 @@ var Login = React.createClass({
     // clicking the button
     event.preventDefault();
     console.log("clicked");
-    this.setState({ username: "" });
-    this.setState({ password: "" });
-    
-
+    helpers.loginUser(this.state)
   },
   // Here we describe this component's render method
   render: function() {
