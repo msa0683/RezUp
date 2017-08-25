@@ -8,6 +8,10 @@ const router = express.Router();
 // configure mongoose promises
 mongoose.Promise = global.Promise;
 
+router.get('/authenticated', (req, res) => {
+  res.send(req.isAuthenticated());
+})
+
 // POST to /register
 router.post('/register', (req, res) => {
 // Create a user object to save, using values from incoming JSON
@@ -17,28 +21,31 @@ router.post('/register', (req, res) => {
   User.register(newUser, req.body.password, (err, user) => {
     //If there's a problem, send back a JSON object with the error
     if(err) {
-      return res.send(JSON.stringify({ error: err }));
+      return res.send(JSON.stringify({success: false, error: err }));
     }
     //else return JSON object w/ the new user info
-    return res.send(JSON.stringify(user));
+    passport.authenticate('local')(req, res, function () {
+      res.send(JSON.stringify({success: true}))
+    });
   });
 });
 
 // POST to /login
-router.post('/login', async (req, res) => {
-  //look up the user by their email
-  const query = User.findOne({ email: req.body.email });
-  const foundUser = await query.exec();
-  
-  passport.authenticate('local')(req, res, () => {
-    // If logged in, we should have user info to send back
-    if (req.user) {
-      return res.send(JSON.stringify(req.user));
-    }
+router.post('/login', (req, res) => {
+  //look up the user by their username
+  User.findOne({ username: req.body.username }, function (err, user) {
+    passport.authenticate('local')(req, res, () => {
+      // If logged in, we should have user info to send back
+      if (req.user) {
+        return res.send(JSON.stringify({success: true}));
+      }
 
     // Otherwise return an error
-    return res.send(JSON.stringify({ error: 'There was an error logging in' }));
+      return res.send(JSON.stringify({success: false}));
+    });
   });
+  // if they exist, they'll have a username, so add that to our body
+  
 });
 
 // GET to /logout

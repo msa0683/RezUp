@@ -4,6 +4,7 @@
   "description": "Application to find private event locations and post event locations ( UCB Full Stack Project 3)",
   "main": "public/index.html",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",

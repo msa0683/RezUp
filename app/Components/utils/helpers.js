@@ -2,13 +2,21 @@ var axios = require('axios');
 
 var helpers = {
 	registerUser: function (userData) {
-		axios.post('/signup', userData)
+		return axios.post('/api/authentication/register', userData)
 	},
 
 	loginUser: function (userData) {
-		debugger
-		axios.post('/login', userData)
-	}
-}
+		return axios.post('/api/authentication/login', userData)
+	},
 
-module.exports = helpers
+	isLoggedIn: function () {
+		return axios.get('/api/authentication/authenticated');
+
+	},
+
+	logOut: function () {
+		return axios.get('/api/authentication/logout')
+	}
+};
+
+module.exports = helpers;
