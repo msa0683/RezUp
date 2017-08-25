@@ -1,7 +1,12 @@
 // Include React
 var React = require("react");
+var Check = require('react-checkbox-group');
+var Checkbox = Check.Checkbox;
+var CheckboxGroup = Check.CheckboxGroup;
 
 // Creating the Form component
+
+
 var ListProperty = React.createClass({
 
   getInitialState: function() {
@@ -20,15 +25,27 @@ var ListProperty = React.createClass({
     time: [],
     price:"",
     images:""
-
   }
  },
+
+
+ componentDidMount() {
+    // Add orange and remove watermelon after 5 seconds
+    setTimeout(() => {
+      this.setState({
+        amenities: [],
+        time:[]
+      });
+    }, 5000);
+  },
+
     handleChange: function(event) {
 
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name] : event.target.value });
 
   },
   
+
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -37,7 +54,6 @@ var ListProperty = React.createClass({
      this.setState({ email: "" });
      this.setState({ venueType: "" });
      this.setState({ occupancy: "" });
-     this.setState({ amenities: "" });
      this.setState({ date: "" });
      this.setState({ time: "" });
      this.setState({ price: "" });
@@ -48,7 +64,21 @@ var ListProperty = React.createClass({
      this.setState({ postal: "" });
      this.setState({ country: "" });
 
+
   },
+
+  amenitiesChanged : function(newAmenities) {
+    this.setState({
+      amenities: newAmenities
+    });
+  },
+
+  timeChanged: function(newTime) {
+    this.setState({
+      time:newTime
+    });
+  },
+
   render: function() {
     return (
        
@@ -106,23 +136,17 @@ var ListProperty = React.createClass({
 
             </label>
             <div className="col-sm-10" id="amenities">
-             <label className="checkbox-inline ">
-              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
-              Wifi
-              </label>
-              <label className="checkbox-inline ">
-              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
-              TV
-              </label>
-              <label className="checkbox-inline ">
-              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
-
-              Speakers
-              </label>
-              <label className="checkbox-inline ">
-              <input value={this.state.amenities} onChange={this.handleChange} type="checkbox"/>
-              Pool
-             </label>           
+              <CheckboxGroup
+                name="amenities"
+                value={this.state.amenities}
+                onChange={this.amenitiesChanged}>
+         
+                <label><Checkbox value="Wifi"/> Wifi</label>
+                <label><Checkbox value="TV"/> TV</label>
+                <label><Checkbox value="Speakers"/> Speakers</label>
+                <label><Checkbox value="Pool"/> Pool</label>
+              </CheckboxGroup>
+           
            </div>
           </div>
           
@@ -190,15 +214,16 @@ var ListProperty = React.createClass({
               Select Time
             </label>
             <div className="col-sm-10">
-              <label className="checkbox-inline ">
-            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox1" value="9 AM - 12 PM"/> 9 AM - 12 PM
-           </label>
-           <label className="checkbox-inline">
-            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox2" value="1 PM - 4 PM"/> 1 PM - 4 PM
-           </label>
-           <label className="checkbox-inline">
-            <input value={this.state.time} onChange={this.handleChange} type="checkbox" name="time" id="checkbox3" value="5 PM - 8 PM"/> 5 PM - 8 PM
-           </label>
+              <CheckboxGroup
+                name="time"
+                value={this.state.time}
+                onChange={this.timeChanged}>
+         
+                <label><Checkbox value="9 AM - 12 PM"/> 9 AM - 12 PM</label>
+                <label><Checkbox value="1 PM - 4 PM"/> 1 PM - 4 PM</label>
+                <label><Checkbox value="5 PM - 8 PM"/> 5 PM - 8 PM</label>
+              </CheckboxGroup>
+
            </div>
            </div>
            <div className="form-group ">

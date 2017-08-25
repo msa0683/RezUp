@@ -9,6 +9,7 @@
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",
     "react": "^0.14.3",
+    "react-checkbox-group": "^3.3.1",
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
@@ -22,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack & node server",
     "start": "node server.js",
-     "build": "webpack"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
