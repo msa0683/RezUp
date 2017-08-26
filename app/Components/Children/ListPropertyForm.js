@@ -3,6 +3,7 @@ var React = require("react");
 var Check = require('react-checkbox-group');
 var Checkbox = Check.Checkbox;
 var CheckboxGroup = Check.CheckboxGroup;
+var Images = require("./images");
 
 // Creating the Form component
 
@@ -236,17 +237,8 @@ var ListProperty = React.createClass({
             </div>
           </div>
           <div className="form-group">
-         <label>Upload Images</label>
-         <div className="input-group">
-            <span className="input-group-btn">
-                <span class="btn btn-default btn-file">
-                    Browse… <input type="file" id="imgInp"/>
-                </span>
-            </span>
-            <input type="text" className="form-control" readonly/>
-        </div>
-        <img id='img-upload'/>
-        </div>
+            <Images />
+          </div>
           <div className="form-group">
             <div className="col-sm-10 col-sm-offset-2">
               <button className="btn btn-primary " name="submit" type="submit">
