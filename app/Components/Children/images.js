@@ -50,7 +50,8 @@ var Images = React.createClass({
     return
   }
   console.log("UPLOAD COMPLETE:" + JSON.stringify(resp.body))
-  const uploaded = resp.body
+  const uploaded = {url:resp.body.url}
+  console.log( 'inside imgae.js --',resp.body['url'])
   const updatedImages = Object.assign([], this.state.images)
   updatedImages.push(uploaded)
   this.setState({
@@ -69,13 +70,17 @@ var Images = React.createClass({
   })
     console.log(images);
  },
-    
+  
+  componentDidUpdate: function() {
+        this.props.setImages(this.state.images);
+  },
   render: function() {
     const list = this.state.images.map((image, i) =>{
+      console.log('image object -->',image);
       return (
         <li key={i}>
-         <img style={{width: 100, display: 'inline'}} src={image.secure_url}/>
-         <br /><a id={i} onClick={this.removeImage.bind(this)} href="#">Remove</a>
+         <img style={{width: 100, display: 'inline'}} src={image.url}/>
+         <br /><a id={i} onClick={this.removeImage} href="#">Remove</a>
         </li> 
 
 
@@ -84,7 +89,7 @@ var Images = React.createClass({
     return (
             <div>
        <b> Upload Images</b>
-        <Dropzone onDrop={this.uploadFile.bind(this)}/>
+        <Dropzone onDrop={this.uploadFile}/>
         <ol>
          { list }
         </ol>

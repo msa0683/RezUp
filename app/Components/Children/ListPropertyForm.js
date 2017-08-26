@@ -1,13 +1,13 @@
 // Include React
 var React = require("react");
 var Check = require('react-checkbox-group');
+
+var helpers = require("../utils/helpers");
 var Checkbox = Check.Checkbox;
 var CheckboxGroup = Check.CheckboxGroup;
 var Images = require("./images");
 
 // Creating the Form component
-
-
 var ListProperty = React.createClass({
 
   getInitialState: function() {
@@ -25,7 +25,7 @@ var ListProperty = React.createClass({
     date: "",
     time: [],
     price:"",
-    images:""
+    uploadImages:[]
   }
  },
 
@@ -40,17 +40,38 @@ var ListProperty = React.createClass({
     }, 5000);
   },
 
-    handleChange: function(event) {
+  handleChange: function(event) {
 
     this.setState({ [event.target.name] : event.target.value });
 
   },
-  
-
-
+  //this method will be called on Submit . Then call helper method to save data
   handleSubmit: function(e) {
+    console.log("inside handle submit");
     e.preventDefault();
     console.log(this.state);
+
+    var newProperty = {
+        venueName: this.state.venueName,
+        email: this.state.email,
+        venueType: this.state.venueType,
+        occupancy: this.state.occupancy,
+        amenities: this.state.amenities,
+        date: this.state.date,
+        time: this.state.time,
+        price: this.state.price,
+        address:this.state.address,
+        city:this.state.city,
+        state:this.state.state,
+        postal:this.state.postal,
+        country:this.state.country
+    }
+
+    helpers.saveProperty(newProperty)
+    .then(function(data){
+      console.log(data);
+    }.bind(this));
+
      this.setState({ venueName: "" });
      this.setState({ email: "" });
      this.setState({ venueType: "" });
@@ -64,7 +85,6 @@ var ListProperty = React.createClass({
      this.setState({ state: "" });
      this.setState({ postal: "" });
      this.setState({ country: "" });
-
 
   },
 
@@ -80,6 +100,14 @@ var ListProperty = React.createClass({
     });
   },
 
+  // This function allows childrens to update the parent.
+  setImages: function(img) {
+      console.log("Updated Image Array -->"+JSON.stringify(img));
+      console.log("Updated Image Array -->"+img.length);
+     // this.setState({ uploadImages: tempArry});
+    //console.log("Updated Image Array -->"+uploadImages);
+  },
+
   render: function() {
     return (
        
@@ -87,7 +115,7 @@ var ListProperty = React.createClass({
    <div className="container-fluid">
     <div className="row">
       <div className="col-md-6 col-sm-6 col-xs-12">
-        <form className="form-horizontal" method="post" id="postPropertyForm" action="/insert" onSubmit ={this.handleSubmit}>
+        <form className="form-horizontal" method="post" id="postPropertyForm" onSubmit ={this.handleSubmit}>
           <div className="form-group ">
             <label className="control-label col-sm-2" for="venueName">
               Venue Name
@@ -237,7 +265,8 @@ var ListProperty = React.createClass({
             </div>
           </div>
           <div className="form-group">
-            <Images />
+
+            <Images setImages={this.setImages} />
           </div>
           <div className="form-group">
             <div className="col-sm-10 col-sm-offset-2">
@@ -255,6 +284,5 @@ var ListProperty = React.createClass({
     );
   }
 });
-
 
 module.exports = ListProperty;

@@ -21,7 +21,7 @@ var PostAdd = new Schema({
     
   },
   occupancy: {
-    type: Number,
+    type: String,
     
   },
     amenities: [{
@@ -29,17 +29,16 @@ var PostAdd = new Schema({
 }],
     
   date: {
-    type: Date,
+    type: String,
     
   },
   time: [{
-    type: Number
+    type: String
 }],
   price: {
-    type: Number,
+    type: String,
     
   }
- 
   
 });
 

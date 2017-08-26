@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../../models/user.js');
-
+var PostAdd = require('../../models/postAdd');
 const router = express.Router();
 
 // configure mongoose promises
@@ -52,6 +52,22 @@ router.post('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout();
   return res.send(JSON.stringify(req.user));
+});
+
+//Post new property to Mongo DB
+router.post('/insert', function(req, res){
+  var propObj = JSON.stringify(req.body);
+  var newProperty = new PostAdd(JSON.parse(propObj));
+  newProperty.save(function(error, doc) {
+      console.log('Doc id  --',doc);
+    if(error){
+      console.log('Mongo Error  --',error);
+      res.send(error);
+    }
+    else{
+      res.send(doc);
+    }
+  });
 });
 
 module.exports = router;
