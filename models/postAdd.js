@@ -12,7 +12,6 @@ var PostAdd = new Schema({
   // email: a string that must match an email format and must be unique in the collection
   email: {
     type: String,
-    unique: true,
     match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
   },
   // userCreated: the current date
@@ -39,6 +38,10 @@ var PostAdd = new Schema({
     type: String,
     
   }
+  ,
+  images: [{
+    type: String
+}]
   
 });
 
