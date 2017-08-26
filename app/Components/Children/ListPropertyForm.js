@@ -48,8 +48,11 @@ var ListProperty = React.createClass({
   //this method will be called on Submit . Then call helper method to save data
   handleSubmit: function(e) {
     console.log("inside handle submit");
-    e.preventDefault();
     console.log(this.state);
+    //console.log("Updated Image Array -->"+JSON.stringify(this.state.uploadImages));
+
+    e.preventDefault();
+
 
     var newProperty = {
         venueName: this.state.venueName,
@@ -64,7 +67,8 @@ var ListProperty = React.createClass({
         city:this.state.city,
         state:this.state.state,
         postal:this.state.postal,
-        country:this.state.country
+        country:this.state.country,
+        images:JSON.stringify(this.state.uploadImages)
     }
 
     helpers.saveProperty(newProperty)
@@ -102,10 +106,7 @@ var ListProperty = React.createClass({
 
   // This function allows childrens to update the parent.
   setImages: function(img) {
-      console.log("Updated Image Array -->"+JSON.stringify(img));
-      console.log("Updated Image Array -->"+img.length);
-     // this.setState({ uploadImages: tempArry});
-    //console.log("Updated Image Array -->"+uploadImages);
+     this.state.uploadImages = img;
   },
 
   render: function() {
