@@ -6,6 +6,8 @@ var ListPropertyForm = require("./Children/ListPropertyForm");
 var SearchPropertyForm = require("./Children/SearchPropertyForm");
 var Login = require("./Children/LoginPage");
 var SignUp = require("./Children/SignUpPage");
+var Link = require("react-router").Link;
+
 
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
@@ -13,9 +15,9 @@ var helpers = require("./utils/helpers");
 var Main = React.createClass({
 
   
- getInitialState: function() {
-    return { searchTerm: "", results: "", history: [], isLoggedIn: false, userId: "" };
-  },
+getInitialState: function() {
+  return { searchTerm: "", results: "", history: [], isLoggedIn: false, userId: "" };
+},
 
   componentWillMount: function () {
     var self = this;
@@ -71,34 +73,40 @@ var Main = React.createClass({
   render: function() {
     // (condition ? (if condition is true do this) : (if condition is false do this)
     return ( 
-      <div className="container-fluid">
-        <div id="content-holder" className="container">
-          <div className="navbar navbar-inverse">
-            <div className="pull-left navbar-brand">
-              <a href="#">REZUP</a>
-            </div>
+        <div>
+            <nav className="navbar navbar-inverse">
+              <div className="container-fluid">
+                <div className="navbar-header">
+                  <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span> 
+                  </button>
+                  <img src="assets/images/Rez-Up-Logo-v2.png" width="90%"/>
+                </div>
+                <div className="collapse navbar-collapse" id="myNavbar">
+                  <ul className="nav navbar-nav">
+                    <li className="active"><Link to="/">Home</Link></li>
+                  </ul>
+                  <Link to="/list" id="ListPropertyButton" className="btn btn-default navbar-btn" 
+                          aria-expanded="false">List Property
+                   {/*<a href="../ListPropertyForm.js" id="ListPropertyButton" className="btn btn-default navbar-btn" 
+                          aria-expanded="false">*/}
+                     <span className="" aria-hidden="true"></span>
+                         List Your Event Space
+                     <span className="caret"></span>
+                   </Link>
+                    {this.state.isLoggedIn ? this.renderLogOutButton() : this.renderLoginButtons()}
+                  {/*<ul className="nav navbar-nav navbar-right">
+                    <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  </ul>*/}
 
-             <div id="navbarForm" className="pull-left">
-              <a href="../ListPropertyForm.js" id="ListPropertyButton" className="btn btn-default navbar-btn" 
-                     aria-expanded="false">
-                <span className="" aria-hidden="true"></span>
-                    List Your Event Space
-                <span className="caret"></span>
-              </a>
+                </div>
               </div>
-            {this.state.isLoggedIn ? this.renderLogOutButton() : this.renderLoginButtons()}
-          </div>
-          <div className="jumbotron">
-            <h2 className="text-center" style={{'color': 'white', 'textShadow': '3px 3px 10px black', 'fontSize': '54px'}}>REZUP</h2>
-              <form className="form-inline pull-left navbar-form form-group" role="form">
-                <input type="text" className="form-control" placeholder="San Ramon, CA"/>
-                <input type="Date" className="form-control" placeholder="DDMMYY"/>   
-                <button type="submit" className="btn btn-primary"> Search </button>
-            </form>
-          </div> 
-           <ListPropertyForm userId={this.state.userId}/>
-        </div>
-      </div>            
+            </nav>
+          {this.props.children } 
+       </div> 
     );
   }
 });

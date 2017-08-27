@@ -1,9 +1,9 @@
-// Include React
+//Include React
 var React = require("react");
 
 // Creating the Form component
  
-var SignUp = React.createClass({
+var SearchPropertyForm = React.createClass({
 
   getInitialState: function() {
   return {
@@ -36,51 +36,33 @@ var SignUp = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
-     
-      
-            <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
-            
-            <div className="modal-dialog modal-sm" role="document">
-                <div className="modal-content">
-                    <div className="modal-header"> <h3> Post a Property! </h3> </div>
-                    <div className="modal-body">
-                    
-                      <form className="form" id="registrationForm" onSubmit ={this.handleSubmit}>
-                          <div className="form-group">
-                              <input value= {this.state.firstName} onChange={this.handleChange} id="rfirstName" name = "firstName" className="form-control" type="text" placeholder="FirstName" />
-                          </div>
-                          <div className="form-group">
-                              <input value= {this.state.lastName} onChange={this.handleChange} id="rLastName" name = "lastName" className="form-control" type="text" placeholder="LastName" />
-                          </div>
-                          <div className="form-group">
-                              <input value= {this.state.username} onChange={this.handleChange} id="ruser" name = "username" className="form-control" type="text" placeholder="Username" />
-                          </div>
-                          <div className="form-group">
-                              <input value= {this.state.email} onChange={this.handleChange} id="remail" name = "email" className="form-control" type="text" placeholder="Email" />
-                          </div>
-                          <div className="form-group">
-                              <input value= {this.state.password} onChange={this.handleChange} id="rpassword" name = "password" className="form-control" type="password" placeholder="Password" />
-                          </div>
-                          <div className="form-group">
-                              <input value= {this.state.rpassword} onChange={this.handleChange} id="rptpassword" name = "rpassword" className="form-control" type="password"
-                                      placeholder="Repeat Password" />
-                          </div>
-                          <input className="btn btn-primary" type="submit" name="register" value="Register" />
-                      </form>
-                    </div>
-                    <div className="modal-footer">
-                        <h5 style={{"display": "inline-block"}}> Already have an account? </h5> <a href="#"> Sign In </a>
-                    </div>
-                </div>
+      <div className="jumbotron">
+        <div className="container">
+          <h2 className="text-center"> Find Exquisite Places To Host Your Event !</h2>
+
+          <form className="form-inline" action="/action_page.php">
+            <div className="form-group">
+              <label for="city">City:</label>
+              <input type="text" className="form-control" id="city" placeholder="Enter City Name" name="city"/>
             </div>
-          </div>
-        
+            <div className="form-group">
+              <label for="dateFrom">Date From:</label>
+              <input type="Date" className="form-control" id="dateFrom" name="dateFrom"/>
+            </div>
+            <div className="form-group">
+              <label for="dateTo">Date To:</label>
+              <input type="Date" className="form-control" id="dateTo" name="dateTo"/>
+            </div>
+            <button type="submit" className="btn btn-success btn-xl">Search</button>
+          </form>
+        </div>  
+      </div>
     );
   }
 });
 
 // Export the component back for use in other files
-module.exports = SignUp;
+module.exports = SearchPropertyForm;
 
 
 
