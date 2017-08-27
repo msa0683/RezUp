@@ -29,7 +29,6 @@ var ListProperty = React.createClass({
   }
  },
 
-
  componentDidMount() {
     // Add orange and remove watermelon after 5 seconds
     setTimeout(() => {

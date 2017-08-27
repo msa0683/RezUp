@@ -1,0 +1,49 @@
+
+  	.jumbotron {
+  		background-image: url("../images/rez-up-front-img-2.jpg");
+  		background-size: cover;
+  		min-height: 700px;
+  		color:#fff;
+  		font-family:Montserrat;
+
+  	}
+  	.navbar {
+  	
+  	    margin:0; /*add this*/
+  	}
+
+  	.container {
+  		margin-top: 550px;
+
+  	}
+
+
+  	.form .form-inline {
+  		margin-right: 0;
+  	}
+
+  	.form-control{
+
+  		height:50px;
+
+  		margin: 10px;
+
+  	}
+	div label {
+		font-size: 20px;
+		text-shadow: 2px 5px 4px #000000;
+	}
+
+	.btn-xl {
+	    padding: 10px 20px;
+	    font-size: 20px;
+	    border-radius: 10px;
+	    border: 2px solid #000200;
+	    color:#ffe821;
+	}
+
+	h2 {
+	    color: white;
+	    text-shadow: 2px 5px 4px #000000;
+	    font-size: 40px;
+	}

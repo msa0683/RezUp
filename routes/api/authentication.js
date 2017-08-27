@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
     passport.authenticate('local')(req, res, () => {
       // If logged in, we should have user info to send back
       if (req.user) {
-        return res.send(JSON.stringify({success: true, userId: user._id}));
+        return res.send(JSON.stringify({success: true}));
       }
 
     // Otherwise return an error

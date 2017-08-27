@@ -26,7 +26,10 @@
     "serve-favicon": "^2.4.3",
     "react-dropzone": "^4.1.0",
     "sha1": "^1.1.1",
-    "superagent": "^3.6.0"
+    "superagent": "^3.6.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
