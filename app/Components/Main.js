@@ -14,14 +14,16 @@ var Main = React.createClass({
 
   
  getInitialState: function() {
-    return { searchTerm: "", results: "", history: [], isLoggedIn: false };
+    return { searchTerm: "", results: "", history: [], isLoggedIn: false, userId: "" };
   },
 
   componentWillMount: function () {
-    debugger
     var self = this;
     helpers.isLoggedIn().then(function (res) {
-      self.setState({isLoggedIn: res.data})
+      self.setState({
+        isLoggedIn: res.data.isAuthenticated,
+        userId: res.data.userId
+      })
     })
   },
 
@@ -44,14 +46,14 @@ var Main = React.createClass({
       )
   },
 
-  handleLogIn: function () {
-    this.setState({isLoggedIn: true})
+  handleLogIn: function (userId) {
+    this.setState({isLoggedIn: true, userId: userId})
   },
 
   handleLogOut: function () {
     var self = this;
     helpers.logOut().then(function() {
-      self.setState({isLoggedIn: false})
+      self.setState({isLoggedIn: false, userId: ""})
     })
   },
 
@@ -94,7 +96,7 @@ var Main = React.createClass({
                 <button type="submit" className="btn btn-primary"> Search </button>
             </form>
           </div> 
-           <ListPropertyForm/>
+           <ListPropertyForm userId={this.state.userId}/>
         </div>
       </div>            
     );

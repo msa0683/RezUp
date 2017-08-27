@@ -55,6 +55,7 @@ var ListProperty = React.createClass({
 
 
     var newProperty = {
+        userId: this.props.userId,
         venueName: this.state.venueName,
         email: this.state.email,
         venueType: this.state.venueType,
@@ -76,19 +77,21 @@ var ListProperty = React.createClass({
       console.log(data);
     }.bind(this));
 
-     this.setState({ venueName: "" });
-     this.setState({ email: "" });
-     this.setState({ venueType: "" });
-     this.setState({ occupancy: "" });
-     this.setState({ date: "" });
-     this.setState({ time: "" });
-     this.setState({ price: "" });
-     this.setState({ images: "" });
-     this.setState({ address: "" });
-     this.setState({ city: "" });
-     this.setState({ state: "" });
-     this.setState({ postal: "" });
-     this.setState({ country: "" });
+     this.setState({ 
+      venueName: "",
+      email: "",
+      venueType: "",
+      occupancy: "",
+      date: "",
+      time: "",
+      price: "",
+      images: "",
+      address: "",
+      city: "",
+      state: "",
+      postal: "",
+      country: ""
+    });
 
   },
 

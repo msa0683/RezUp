@@ -24,7 +24,7 @@ var Login = React.createClass({
     event.preventDefault();
     helpers.loginUser(this.state).then(function (res) {
       if (res.data.success) {
-        self.props.handleLogIn();
+        self.props.handleLogIn(res.data.userId);
       }
     })
   },
