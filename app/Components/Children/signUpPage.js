@@ -37,7 +37,6 @@ var SignUp = React.createClass({
     helpers.registerUser(this.state).then(function (res) {
       if (res.data.success) {
         $("#registerModal").modal('hide')
-        debugger
         self.props.handleLogIn(res.data.userId)
       }
     })

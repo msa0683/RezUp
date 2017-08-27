@@ -60,7 +60,6 @@ mongoose.connect("mongodb://localhost:27017/rezUp", { useMongoClient: true });
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//uncomment after placing favicon in public 
 app.use(logger('dev'));
 // app.use(methodOverride('_method'))
 app.use(bodyParser.json());
