@@ -9,7 +9,7 @@ const router = express.Router();
 mongoose.Promise = global.Promise;
 
 router.get('/authenticated', (req, res) => {
-  res.send(req.isAuthenticated());
+  res.send(JSON.stringify({isAuthenticated: req.isAuthenticated(), userId: req.user ? req.user._id : ""}))
 })
 
 // POST to /register
@@ -25,7 +25,7 @@ router.post('/register', (req, res) => {
     }
     //else return JSON object w/ the new user info
     passport.authenticate('local')(req, res, function () {
-      res.send(JSON.stringify({success: true}))
+      res.send(JSON.stringify({success: true, userId: user._id}))
     });
   });
 });
@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
     passport.authenticate('local')(req, res, () => {
       // If logged in, we should have user info to send back
       if (req.user) {
-        return res.send(JSON.stringify({success: true}));
+        return res.send(JSON.stringify({success: true, userId: user._id}));
       }
 
     // Otherwise return an error
