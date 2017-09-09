@@ -1,49 +1,160 @@
 
-  	.jumbotron {
-  		background-image: url("../images/rez-up-front-img-2.jpg");
-  		background-size: cover;
-  		min-height: 700px;
-  		color:#fff;
-  		font-family:Montserrat;
+    .jumbotron {
+      background-image: url("../images/rez-up-front-img-2.jpg");
+      background-size: cover;
+      min-height: 700px;
+      color:#fff;
+      font-family:Montserrat;
 
-  	}
-  	.navbar {
-  	
-  	    margin:0; /*add this*/
-  	}
+    }
 
-  	.container {
-  		margin-top: 550px;
+    #logo {
+      width: 90%;
+    }
+    .navbar {
+    
+        margin:0; /*add this*/
+    }
 
-  	}
+    .indexlable {
+      font-size: 22px;
+      font-family: Artifika;
+    }
+
+    #frontcontainer {
+      margin-top: 550px;
+
+    }
 
 
-  	.form .form-inline {
-  		margin-right: 0;
-  	}
+    .form .form-inline {
+      margin-right: 0;
+    }
 
-  	.form-control{
+    .form-control{
 
-  		height:50px;
+      height:50px;
 
-  		margin: 10px;
+      margin: 10px;
 
-  	}
-	div label {
-		font-size: 20px;
-		text-shadow: 2px 5px 4px #000000;
-	}
+    }
 
-	.btn-xl {
-	    padding: 10px 20px;
-	    font-size: 20px;
-	    border-radius: 10px;
-	    border: 2px solid #000200;
-	    color:#ffe821;
-	}
+  .frontlable label {
+    font-size: 20px;
+    text-shadow: 2px 5px 4px #000000;
+  }
 
-	h2 {
-	    color: white;
-	    text-shadow: 2px 5px 4px #000000;
-	    font-size: 40px;
-	}
+  .btn-xl {
+      padding: 10px 20px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: 2px solid #000200;
+      color:#ffe821;
+  }
+
+  h2 {
+      color: white;
+      text-shadow: 2px 5px 4px #000000;
+      font-size: 40px;
+  }
+
+  .panel-success .panel-heading {
+    background: #01a0b2;
+    color:#fff;
+    font-size: 15px;
+    font-family: Artifika;
+    text-align: center;
+  }
+
+  .panel-primary .panel-heading {
+    
+    background: #0a5cd6;
+    color:#fff;
+    font-size: 15px;
+    font-family: Artifika;
+    text-align: center;
+  }
+
+  .panel-warning .panel-heading {
+    
+    background: #28913d;
+    color:#fff;
+    font-size: 15px;
+    font-family: Artifika;
+    text-align: center;
+  }
+
+  #signInBtn {
+    margin-right: 10px; 
+  }
+
+  #ListPropertyButton {
+    margin-right: 15px;
+    font-family:Montserrat;
+    font-size: 15px;
+
+  }
+    .container {
+      margin-top: 20px;
+    
+    }
+
+    #detailcontainer {
+      border: 1px solid #000200;
+    }
+
+    .panel-primary{
+      margin-top: 55px;
+    }
+
+    hr {
+      height: 10px;
+      border: 0;
+      margin-top:0;
+      margin-bottom: 0;
+      box-shadow: 0 10px 10px -10px #8c8b8b inset;
+    }
+
+    #logo {
+      width: 150px;
+    }
+
+    .carouselimg {
+      width:100%;
+    }
+
+
+  #each_row {
+    margin-bottom: 30px;
+    border:1px solid grey;
+    border-radius: 5px;
+    padding: 20px 0px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  #form{
+    width: 600px;
+    background-image: url('http://veristream.com/wp-content/uploads/contact-form-background.jpg')
+  }
+
+  #formDiv{
+    width: 400px;
+    margin: auto;
+  }
+
+  #amenities label{
+   margin-left: 0px;
+  }
+
+  #cbox label{
+    margin: auto;
+    margin-left: 15px;
+    display:inline-block;
+
+  }
+
+  #ckBox label{
+    margin-left: 15px;
+    display:inline-block;
+  }
+ 
