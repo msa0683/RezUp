@@ -4,6 +4,10 @@ var Schema = mongoose.Schema;
 
 
 var PostAdd = new Schema({
+  userId:{
+    type: String
+  },
+
   venueName: {
     type: String,
     trim: true,
@@ -26,17 +30,45 @@ var PostAdd = new Schema({
     amenities: [{
     type: String
 }],
+  description:{
+    
+    type: String,
+  },
+   address: {
+    type: String,
+    
+  },
+  city: {
+    type: String,
+    
+  },
+  state: {
+    type: String,
+    
+  },
+  postal: {
+    type: String,
+    
+  },
+  country: {
+    type: String,
+    
+  },
     
   date: {
     type: String,
     
   },
+
+  days:{
+   type: String,
+  },
+
   time: [{
     type: String
 }],
   price: {
     type: String,
-    
   }
   ,
   images: [{
