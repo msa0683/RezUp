@@ -26,7 +26,21 @@ var helpers = {
 			console.log('axios result',res.data._id);
 			return res.data._id;
 		});
+	},
+
+	getListings: function(city) {
+	return axios.get("/api/authentication/saved/"+city)
+	  .then(function(results) {
+	    console.log("axios results", results);
+	    return results;
+	  });
+	},
+
+	getListingById: function(propertyId) {
+		return axios.get("/api/authentication/property/" + propertyId)
 	}
+
 };
+
 
 module.exports = helpers;
