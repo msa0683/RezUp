@@ -7,6 +7,8 @@ var Checkbox = Check.Checkbox;
 var CheckboxGroup = Check.CheckboxGroup;
 var Images = require("./images");
 
+
+
 // Creating the Form component
 var ListProperty = React.createClass({
 
@@ -23,6 +25,7 @@ var ListProperty = React.createClass({
     postal: "",
     country: "",
     date: "",
+    days: "",
     time: [],
     price:"",
     uploadImages:[]
@@ -47,7 +50,9 @@ var ListProperty = React.createClass({
   //this method will be called on Submit . Then call helper method to save data
   handleSubmit: function(e) {
     console.log("inside handle submit");
-    console.log(this.state);
+
+    console.log(this.props.userId);
+
     //console.log("Updated Image Array -->"+JSON.stringify(this.state.uploadImages));
 
     e.preventDefault();
@@ -61,8 +66,10 @@ var ListProperty = React.createClass({
         occupancy: this.state.occupancy,
         amenities: this.state.amenities,
         date: this.state.date,
+        days: this.state.days,
         time: this.state.time,
         price: this.state.price,
+        description:this.state.description,
         address:this.state.address,
         city:this.state.city,
         state:this.state.state,
@@ -82,6 +89,7 @@ var ListProperty = React.createClass({
       venueType: "",
       occupancy: "",
       date: "",
+      days: "",
       time: "",
       price: "",
       images: "",
@@ -89,7 +97,9 @@ var ListProperty = React.createClass({
       city: "",
       state: "",
       postal: "",
-      country: ""
+      country: "",
+      images: "",
+      description:""
     });
 
   },
@@ -111,37 +121,44 @@ var ListProperty = React.createClass({
      this.state.uploadImages = img;
   },
 
+ 
+            
+
   render: function() {
     return (
-       
-  <div className="bootstrap-iso">
-   <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-6 col-sm-6 col-xs-12">
+    
+       <div className="container-fluid" id="form">
+        <div className="form-dark" className="card card-image">
         <form className="form-horizontal" method="post" id="postPropertyForm" onSubmit ={this.handleSubmit}>
-          <div className="form-group ">
-            <label className="control-label col-sm-2" for="venueName">
+          <div className="form-group" id="formDiv">
+
+             <div className="text-center">
+                <h3 className="white-text mb-5 mt-4 font-bold"><strong>LIST YOUR</strong> <a class="green-text font-bold"><strong> PROPERTY</strong></a></h3>
+            </div>
+          <div className="form-group">
+
+            <label className="control-label" for="venueName">
               Venue Name
             </label>
-            <div className="col-sm-10">
+           
               <input type="text" value={this.state.venueName} onChange={this.handleChange} className="form-control" id="venueName" name="venueName" placeholder="venueName" />
-            </div>
+           
           </div>
           <div className="form-group ">
-            <label className="control-label col-sm-2" for="email">
+            <label className="control-label" for="email">
               Email
             </label>
-            <div className="col-sm-10">
+           
               <input type="text" value={this.state.email} onChange={this.handleChange} className="form-control" id="email" name="email" placeholder="alex@smith.com" />
-            </div>
+            
           </div>
 
            <div className="form-group ">
             <label className="control-label col-sm-2" for="venueType">
               Venue Type
             </label>
-            <div className="col-sm-10" id="venueType">
-             <select name="venueType" value={this.state.venueType} onChange={this.handleChange}>
+            <div className="form-group" id="venueType">
+             <select className="selectpicker btn-lg" name="venueType" value={this.state.venueType} onChange={this.handleChange}>
               <option>Event Space</option>
               <option>Meeting Space</option>
               <option>Others</option>
@@ -150,107 +167,114 @@ var ListProperty = React.createClass({
            </div>
 
            <div className="form-group ">
-            <label className="control-label col-sm-2" for="occupancy">
+            <label className="control-label col-sm-3" for="occupancy">
               Occupancy
             </label>
-            <div className="col-sm-10" id="occupancy">
-             <select name="occupancy" value={this.state.occupancy} onChange={this.handleChange}>
-            <option>1-50</option>
-            <option>50-75</option>
-            <option>75-100</option>
-            <option>100-125</option>
+           
+            <select className="selectpicker btn-lg" name="occupancy" value={this.state.occupancy} onChange={this.handleChange}>
+             <option>20-50</option>
+             <option>50-80</option>
+             <option>80-120</option>
+             <option>120-150</option>
             </select>            
            </div>
-           </div>
-           <div className="form-group ">
-            <label className="control-label col-sm-2" for="amenities">
+          
+           <div className="form-group" id="amenities">
+            <label className="control-label col-sm-3" for="amenities">
               Amenities
 
             </label>
-            <div className="col-sm-10" id="amenities">
-              <CheckboxGroup
+              <CheckboxGroup 
+                className="btn-sm"
                 name="amenities"
                 value={this.state.amenities}
-                onChange={this.amenitiesChanged}>
-         
+                onChange={this.amenitiesChanged} id="cbox">
+                
                 <label><Checkbox value="Wifi"/> Wifi</label>
                 <label><Checkbox value="TV"/> TV</label>
                 <label><Checkbox value="Speakers"/> Speakers</label>
                 <label><Checkbox value="Pool"/> Pool</label>
+                <label><Checkbox value="Pool"/> Parking</label>
               </CheckboxGroup>
-           
-           </div>
           </div>
-          
-          <div className="form-group ">
-            <label className="control-label col-sm-2" for="address">
-              Address Line
+            <div className="form-group ">
+            <label className="control-label" for="description">
+              About the property 
             </label>
-            <div className="col-sm-10">
-              <input type="text" value={this.state.address} onChange={this.handleChange} className="form-control" id="address" name="address" placeholder="Address Line " />
+              <textarea className="form-control" name="description" value={this.state.description} onChange={this.handleChange}></textarea>
             </div>
-          </div>
+            <div className="form-group ">
+            <label className="control-label" for="address">
+              Address
+            </label>
+             <input type="text" value={this.state.address} onChange={this.handleChange} className="form-control" id="address" name="address" placeholder="Address Line " />
+            </div>
+           <div className="row">
+            <div className="col-xs-6">
           
-           <div className="form-group ">
-            <label className="control-label col-sm-2" for="address">
+            <label className="control-label" for="city">
               City
             </label>
-            <div className="col-sm-10">
-              <input type="text" value={this.state.city} onChange={this.handleChange} className="form-control" id="city" name="city" placeholder="City" />
+             <input type="text" value={this.state.city} onChange={this.handleChange} className="form-control" id="city" name="city" />
             </div>
-          </div>
-          
 
-          
-          <div className="form-group ">
-            <label className="control-label col-sm-2" for="address">
-             State
+            <div className="col-xs-6">
+            <label className="control-label" for="state">
+              State
             </label>
-            <div className="col-sm-10">
               <input type="text" value={this.state.state} onChange={this.handleChange} className="form-control" id="state" name="state" placeholder="State" />
             </div>
-          </div>
-          
-
-            <div className="form-group ">
-            <label className="control-label col-sm-2" for="address">
-              Postal Code
-            </label>
-            <div className="col-sm-10">
+            </div>
+            <div className="row">
+             <div className="col-xs-6">
+             <label className="control-label" for="postal">
+              Postal
+             </label>
               <input type="text" value={this.state.postal} onChange={this.handleChange} className="form-control" id="postal" name="postal" placeholder="Postal Code" />
             </div>
-          </div>
-          
-         
-          <div className="form-group ">
-            <label className="control-label col-sm-2" for="address">
+
+            <div className="col-xs-6">
+             <label className="control-label" for="country">
               Country
-            </label>
-            <div className="col-sm-10">
+             </label>
               <input type="text" value={this.state.country} onChange={this.handleChange} className="form-control" id="address" name="country" placeholder="Country" />
             </div>
-          </div>
-          
-
-
-          <div className="form-group" id="datetimepicker">
-            <label className="input-group date col-sm-2" for="date">
-              Date
-            </label>
-            <div className="col-sm-10">
-              <input className="form-control" value={this.state.date} onChange={this.handleChange} id="date" name="date" placeholder="MM/DD/YYYY" type="date" />
-             
             </div>
-          </div>
+            <div className = "row">
+            <div className="col-xs-6">
+             <label className="control-label" for="date">
+              Date 
+             </label>
+              <input className="form-control" value={this.state.date} onChange={this.handleChange} id="date" name="date" placeholder="MM/DD/YYYY" type="date" />
+            </div>
+
+            <div className="col-xs-6">
+             <label className="control-label" for="days">
+              Days 
+             </label>
+              <input className="form-control" value={this.state.days} onChange={this.handleChange} id="days" name="days" type="text" />
+            </div>
+            </div>
+
+            <div className = "row">
+            <div className="col-xs-6">
+             <label className="control-label" for="email">
+              Price
+             </label>
+              <input value={this.state.price} onChange={this.handleChange} className="form-control" id="price" name="price" placeholder="price" type="text" />
+            </div>
+            </div>
+            
+         
            <div className="form-group ">
             <label className="control-label col-sm-2" for="time">
-              Select Time
+             Time
             </label>
-            <div className="col-sm-10">
+          
               <CheckboxGroup
                 name="time"
                 value={this.state.time}
-                onChange={this.timeChanged}>
+                onChange={this.timeChanged} id="ckBox">
          
                 <label><Checkbox value="9 AM - 12 PM"/> 9 AM - 12 PM</label>
                 <label><Checkbox value="1 PM - 4 PM"/> 1 PM - 4 PM</label>
@@ -258,32 +282,26 @@ var ListProperty = React.createClass({
               </CheckboxGroup>
 
            </div>
-           </div>
-           <div className="form-group ">
-            <label className="control-label col-sm-2" for="price">
-              Price
-            </label>
-            <div className="col-sm-10">
-              <input value={this.state.price} onChange={this.handleChange} className="form-control" id="price" name="price" placeholder="price" type="text" />
-            </div>
-          </div>
-          <div className="form-group">
+         
+           <div className="form-group">
 
             <Images setImages={this.setImages} />
-          </div>
+           </div>
+
           <div className="form-group">
-            <div className="col-sm-10 col-sm-offset-2">
-              <button className="btn btn-primary " name="submit" type="submit">
+            <div className="col-lg-10 col-lg-offset-4">
+              <button className="btn btn-primary btn-lg" name="submit" type="submit">
                 Submit
               </button>
             </div>
           </div>
+            
+
+         </div>
         </form>
-      </div>
-    </div>
-  </div>
-</div>
-        
+        </div>
+       </div> 
+
     );
   }
 });
