@@ -23,7 +23,7 @@ var Main = require("../Components/Main");
 var ListPropertyForm = require("../Components/Children/ListPropertyForm");
 //var Saved = require("../components/Saved");
 var SearchProperty = require("../Components/Children/SearchPropertyForm");
-
+var DetailsPage = require("../Components/Children/DetailsPage");
 
 // Export the Routes
 module.exports = (
@@ -32,6 +32,7 @@ module.exports = (
     <Route path="/" component={Main}>
       {/* If user selects list show the appropriate component */}
       <Route path="list" component={ListPropertyForm} />
+      <Route path="property/:id" component={DetailsPage} />
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={SearchProperty} />
      </Route>
