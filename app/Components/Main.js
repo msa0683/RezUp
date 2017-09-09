@@ -8,15 +8,15 @@ var Login = require("./Children/LoginPage");
 var SignUp = require("./Children/SignUpPage");
 var Link = require("react-router").Link;
 
-
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
 
 var Main = React.createClass({
 
+
   
 getInitialState: function() {
-  return { searchTerm: "", results: "", history: [], isLoggedIn: false, userId: "" };
+  return { isLoggedIn: false, userId: ""};
 },
 
   componentWillMount: function () {
@@ -25,6 +25,7 @@ getInitialState: function() {
       self.setState({
         isLoggedIn: res.data.isAuthenticated,
         userId: res.data.userId
+
       })
     })
   },
@@ -32,15 +33,15 @@ getInitialState: function() {
   renderLoginButtons: function () {
     return (
         <div id="navbarForm" className="pull-right">
-          <a href="#" id="signInBtn" className="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown"
+          <a href="#" id="signInBtn" className="btn btn-success navbar-btn dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
             <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
-                Sign In
-            <span className="caret"></span>
+                &nbsp;&nbsp;Sign In
+
           </a>
-          <a href="#" id="registerBtn" className="btn btn-default navbar-btn" data-toggle="modal" data-target="#registerModal">
+          <a href="#" id="registerBtn" className="btn btn-primary navbar-btn" data-toggle="modal" data-target="#registerModal">
             <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Register
+                &nbsp;&nbsp;Register
           </a>
           <SignUp handleLogIn={this.handleLogIn}/>
           <Login handleLogIn={this.handleLogIn}/>
@@ -61,17 +62,25 @@ getInitialState: function() {
 
   renderLogOutButton: function () {
      return (
+
         <div id="navbarForm" className="pull-right">
-          <a href="#" id="signInBtn" onClick={this.handleLogOut} className="btn btn-default navbar-btn">
+
+          <Link to="/list" id="ListPropertyButton" className="btn btn-success navbar-btn" 
+                aria-expanded="false"><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Add New Property
+          </Link>
+          <a href="#" id="signInBtn"  onClick={this.handleLogOut} className="btn btn-danger navbar-btn">
             <span className="glyphicon glyphicon-user" aria-hidden="true"></span>
-              Log Out
+              &nbsp;&nbsp;Log Out
           </a>
         </div>
       )
   },
   // Here we describe this component's render method
   render: function() {
-    // (condition ? (if condition is true do this) : (if condition is false do this)
+    var self = this;
+    var childWithProp = React.Children.map(this.props.children, function (child) {
+      return React.cloneElement(child, {userId: self.state.userId});
+    });
     return ( 
         <div>
             <nav className="navbar navbar-inverse">
@@ -82,22 +91,32 @@ getInitialState: function() {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span> 
                   </button>
-                  <img src="assets/images/Rez-Up-Logo-v2.png" width="90%"/>
+                  <img id="logo" src="assets/images/Rez-Up-Logo-v2.png"/>
                 </div>
                 <div className="collapse navbar-collapse" id="myNavbar">
                   <ul className="nav navbar-nav">
+
+
                     <li className="active"><Link to="/">Home</Link></li>
                   </ul>
-                  <Link to="/list" id="ListPropertyButton" className="btn btn-default navbar-btn" 
+                 {/* <Link to="/list" id="ListPropertyButton" className="btn btn-default navbar-btn" 
                           aria-expanded="false">List Property
-                   {/*<a href="../ListPropertyForm.js" id="ListPropertyButton" className="btn btn-default navbar-btn" 
-                          aria-expanded="false">*/}
+
                      <span className="" aria-hidden="true"></span>
                          List Your Event Space
                      <span className="caret"></span>
-                   </Link>
+                   </Link>*/}
                     {this.state.isLoggedIn ? this.renderLogOutButton() : this.renderLoginButtons()}
-                  {/*<ul className="nav navbar-nav navbar-right">
+
+
+                  {/*
+<<<<<<< HEAD
+
+=======
+                    
+>>>>>>> a1022f8be2a0a0e32a73059397faf5093d8a6c71
+
+                  <ul className="nav navbar-nav navbar-right">
                     <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
                   </ul>*/}
@@ -105,7 +124,9 @@ getInitialState: function() {
                 </div>
               </div>
             </nav>
-          {this.props.children } 
+          {childWithProp} 
+
+           
        </div> 
     );
   }
