@@ -5,6 +5,7 @@
   "main": "public/index.html",
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-register": "^6.26.0",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
@@ -22,12 +23,12 @@
     "react": "^15.1.0",
     "react-checkbox-group": "^3.3.1",
     "react-dom": "^15.1.0",
+    "react-dropzone": "^4.1.0",
+    "react-router": "^2.4.1",
     "routes": "^2.1.0",
     "serve-favicon": "^2.4.3",
-    "react-dropzone": "^4.1.0",
     "sha1": "^1.1.1",
-    "superagent": "^3.6.0",
-    "react-router": "^2.4.1"
+    "superagent": "^3.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
