@@ -1,4 +1,5 @@
 // Include React
+import { Link } from 'react-router-dom';
 var React = require("react");
 var Check = require('react-checkbox-group');
 
@@ -290,9 +291,11 @@ var ListProperty = React.createClass({
 
           <div className="form-group">
             <div className="col-lg-10 col-lg-offset-4">
+            <Link to={`/DetailsPage.js`}>
               <button className="btn btn-primary btn-lg" name="submit" type="submit">
                 Submit
               </button>
+            </Link>
             </div>
           </div>
             
